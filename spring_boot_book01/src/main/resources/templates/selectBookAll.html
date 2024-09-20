@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>전체 도서 조회</title>
+</head>
+<body>
+	<h1 align="center">전체 도서 조회</h1>
+	<table align="center" border="1"><!-- 테이블 시작 가운데 정렬 테이블 테두리 1 -->
+		<tr>
+			<th width="150">아이디</th>
+			<th width="150">이름</th>
+			<!-- <th width="150">출판사</th>
+			<th width="150">가격</th> -->
+		</tr>
+		<!-- allBook에서 Book 객체 하나씩 순서대로 꺼내서 변수 book에 저장하고 반복 -->
+		<tr th:each="book : ${allBook}">
+			<td>
+				<a th:href="@{/selectBook(bookid=${book.bookid})}" th:text=" ' 책 아이디' + ${book.bookid} + ' 조회!!' "></a>
+			</td>
+			<td th:text="${book.bookname}"></td>
+			<!-- <td th:text="${book.publisher}"></td>
+			<td th:text="${book.price}"></td> -->
+		</tr>
+	</table>
+	<p align="center"><!-- 문단 생성 -->
+		<a th:href="@{/insertBookForm}" th:text=" '책 추가화면 이동!!' "></a>
+	</p>
+</body>
+</html>
